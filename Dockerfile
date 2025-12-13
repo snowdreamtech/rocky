@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9.7
+FROM rockylinux/rockylinux:10.0
 
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/rocky" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="9.7" \
+    org.opencontainers.image.version="10.0" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/rocky"
     
 # Switch to the user
