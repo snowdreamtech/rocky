@@ -5,7 +5,7 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/rocky)
 ![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/rocky)
 
-Docker Image packaging for rocky. (amd64, arm32v5, arm32v7, arm64v8, i386,riscv64, ppc64le, s390x)
+Docker Image packaging for rocky. (amd64, arm64v8, riscv64, ppc64le, s390x)
 
 # Usage
 
