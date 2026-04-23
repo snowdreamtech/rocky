@@ -11,9 +11,9 @@
 
 | 版本 | Rocky Linux | 基础镜像 | 标签格式 | 状态 |
 |------|-------------|----------|----------|------|
-| 8 | 8.10 | rockylinux/rockylinux:8.10-minimal | `8-v8.10.0` | ✅ 活跃 |
-| 9 | 9.7 | rockylinux/rockylinux:9.7-minimal | `9-v9.7.0` | ✅ 活跃 |
-| 10 | 10.1 | rockylinux/rockylinux:10.1-minimal | `10-v10.1.0` | ✅ 活跃 |
+| 8 | 8.10 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | ✅ 活跃 |
+| 9 | 9.7 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | ✅ 活跃 |
+| 10 | 10.1 | rockylinux/rockylinux:10.1 | `10-v10.1.0` | ✅ 活跃 |
 
 ## 支持的架构
 

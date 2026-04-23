@@ -11,9 +11,9 @@ Professional Docker Image packaging for Rocky Linux. Supports multiple versions 
 
 | Version | Rocky Linux | Base Image | Tag Format | Status |
 |---------|-------------|------------|------------|--------|
-| 8 | 8.10 | rockylinux/rockylinux:8.10-minimal | `8-v8.10.0` | ✅ Active |
-| 9 | 9.7 | rockylinux/rockylinux:9.7-minimal | `9-v9.7.0` | ✅ Active |
-| 10 | 10.1 | rockylinux/rockylinux:10.1-minimal | `10-v10.1.0` | ✅ Active |
+| 8 | 8.10 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | ✅ Active |
+| 9 | 9.7 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | ✅ Active |
+| 10 | 10.1 | rockylinux/rockylinux:10.1 | `10-v10.1.0` | ✅ Active |
 
 ## Supported Architectures
 
