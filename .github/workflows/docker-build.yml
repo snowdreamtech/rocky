@@ -1,0 +1,163 @@
+name: Docker Multi-Architecture Build
+
+on:
+  push:
+    branches:
+      - "main"
+      - "dev"
+      - "feat/**"
+      - "feature/**"
+      - "fix/**"
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "V[0-9]+.[0-9]+.[0-9]+"
+      - "rocky-*.*.*"
+      - "[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+"
+      - "V[0-9]+.[0-9]+"
+      - "rocky-*.*"
+      - "[0-9]+"
+      - "v[0-9]+"
+      - "V[0-9]+"
+      - "rocky-*"
+  pull_request:
+    branches:
+      - "main"
+      - "dev"
+  schedule:
+    # Automatically run daily at 16:30 UTC
+    - cron: "30 16 * * *"
+  workflow_dispatch:
+
+env:
+  REGISTRY_DOCKERHUB: docker.io
+  REGISTRY_GHCR: ghcr.io
+  REGISTRY_QUAY: quay.io
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [8, 9, 10]
+        include:
+          - version: 8
+            rocky_version: "8.10.0"
+            base_image: "rockylinux/rockylinux:8.10-minimal"
+            platforms: "linux/amd64,linux/arm64,linux/ppc64le,linux/s390x"
+          - version: 9
+            rocky_version: "9.7.0"
+            base_image: "rockylinux/rockylinux:9.7-minimal"
+            platforms: "linux/amd64,linux/arm64,linux/ppc64le,linux/s390x"
+          - version: 10
+            rocky_version: "10.1.0"
+            base_image: "rockylinux/rockylinux:10.1-minimal"
+            platforms: "linux/amd64,linux/arm64,linux/ppc64le,linux/s390x"
+
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: false
+          swap-storage: false
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: |
+            env.http_proxy=${{ env.http_proxy }}
+            env.https_proxy=${{ env.http_proxy }}
+            "env.no_proxy='${{ env.no_proxy}}'"
+
+      - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY_DOCKERHUB }}
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Login to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY_GHCR }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Quay.io
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY_QUAY }}
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_ROBOT_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            name=snowdreamtech/rocky,enable=true
+            name=ghcr.io/snowdreamtech/rocky,enable=true
+            name=quay.io/snowdreamtech/rocky,enable=true
+          flavor: |
+            latest=false
+            prefix=${{ matrix.version }}-v
+            suffix=
+          tags: |
+            type=ref,enable=${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/master' && github.event_name != 'schedule' }},priority=600,event=branch
+            type=edge,enable=true,priority=700,branch=dev
+            type=raw,enable=${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && github.event_name != 'schedule' }},priority=200,value=${{ matrix.rocky_version }}
+            type=raw,enable=${{ startsWith(github.ref, 'refs/tags/') }},priority=200,value=${{ matrix.rocky_version }}
+            type=schedule,enable=true,priority=1000,value=nightly-${{ matrix.rocky_version }}
+            type=match,enable=true,priority=800,pattern=\d+.\d+.\d+,group=0,value=${{ matrix.rocky_version }}
+            type=match,enable=true,priority=800,pattern=\d+.\d+,group=0,value=${{ matrix.rocky_version }}
+            type=match,enable=true,priority=800,pattern=\d+,group=0,value=${{ matrix.version }}
+        env:
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./docker/${{ matrix.version }}
+          platforms: ${{ matrix.platforms }}
+          build-args: |
+            BUILDTIME=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          push: ${{ github.event_name != 'pull_request' && !startsWith(github.ref, 'refs/heads/feat/') && !startsWith(github.ref, 'refs/heads/feature/') && !startsWith(github.ref, 'refs/heads/fix/') }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          annotations: ${{ steps.meta.outputs.annotations }}
+          cache-from: type=gha,scope=rocky-${{ matrix.version }}
+          cache-to: type=gha,mode=max,scope=rocky-${{ matrix.version }}
+
+      - name: Test image functionality
+        if: github.event_name == 'pull_request'
+        run: |
+          # Basic functionality test
+          docker run --rm --platform linux/amd64 snowdreamtech/rocky:${{ matrix.version }}-v${{ matrix.rocky_version }} /bin/bash -c "echo 'Rocky Linux ${{ matrix.version }} test passed'"
+
+          # User mapping test
+          docker run --rm --platform linux/amd64 -e PUID=1000 -e PGID=1000 -e USER=testuser \
+            snowdreamtech/rocky:${{ matrix.version }}-v${{ matrix.rocky_version }} /bin/bash -c "id"
+
+          # Debug mode test
+          docker run --rm --platform linux/amd64 -e DEBUG=true \
+            snowdreamtech/rocky:${{ matrix.version }}-v${{ matrix.rocky_version }} /bin/bash -c "echo 'Debug test passed'"
