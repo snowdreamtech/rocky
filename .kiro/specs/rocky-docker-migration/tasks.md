@@ -43,7 +43,7 @@ The migration establishes a standardized Docker ecosystem for Rocky Linux versio
 - [x] 4. Standardize package management across Rocky versions
   - Configure dnf repositories (CRB, devel, extras, EPEL) for all versions
   - Implement standardized package installation patterns with proper error handling
-  - Add essential development and operational tools (git, curl, vim, lsb-release, procps-ng, sudo)
+  - Add essential development and operational tools (git, curl, vim, redhat-lsb-core, procps-ng, sudo)
   - Implement comprehensive cleanup and cache management (dnf clean, temp file removal)
   - Handle version-specific package differences between Rocky 8, 9, and 10
   - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_

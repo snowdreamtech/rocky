@@ -503,7 +503,7 @@ FROM rockylinux/rockylinux:8.10
 
 # Version-specific packages for Rocky 8
 RUN dnf -y --allowerasing install \
-    lsb-release \
+    redhat-lsb-core \
     procps-ng \
     sudo \
     vim-enhanced \
@@ -517,7 +517,7 @@ FROM rockylinux/rockylinux:9.7
 
 # Version-specific packages for Rocky 9
 RUN dnf -y --allowerasing install \
-    lsb-release \
+    redhat-lsb-core \
     procps-ng \
     sudo \
     vim-enhanced \
@@ -531,7 +531,7 @@ FROM rockylinux/rockylinux:10.1
 
 # Version-specific packages for Rocky 10
 RUN dnf -y --allowerasing install \
-    lsb-release \
+    redhat-lsb-core \
     procps-ng \
     sudo \
     vim-enhanced \
