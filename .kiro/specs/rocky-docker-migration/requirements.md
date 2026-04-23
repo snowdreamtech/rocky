@@ -36,7 +36,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want a standardized docker/ folder structure, so that I can easily manage multiple Rocky Linux versions consistently.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 2)
 
 1. THE Docker_Structure SHALL create docker/ folder containing subdirectories for versions 8, 9, and 10
 2. WHEN organizing version directories, THE Docker_Structure SHALL use numeric naming (8/, 9/, 10/) corresponding to Rocky Linux major versions
@@ -48,7 +48,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want to use Rocky Linux minimal images with proper version tagging, so that I can ensure consistent and secure base images.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 3)
 
 1. THE Base_Image SHALL use Rocky Linux minimal images (FROM rockylinux/rockylinux:X.Y format)
 2. WHEN configuring version 8, THE Base_Image SHALL use rockylinux/rockylinux:8.10
@@ -61,7 +61,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want Docker files aligned with alpine project standards, so that I can maintain consistency across different Linux distribution images.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 4)
 
 1. THE Dockerfile SHALL follow Reference_Project structure including OCI annotations, build arguments, and environment variables
 2. THE docker-entrypoint.sh SHALL implement Reference_Project patterns for initialization orchestration and debug logging
@@ -74,7 +74,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want multi-architecture support for Rocky Linux images, so that I can deploy containers across different hardware platforms.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 5)
 
 1. THE Architecture_Support SHALL support linux/amd64, linux/arm64, linux/ppc64le, linux/s390x platforms
 2. WHEN building for version 8, THE Architecture_Support SHALL include platforms available for Rocky Linux 8.10
@@ -87,7 +87,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want automated build workflows, so that I can ensure consistent image builds across all versions and architectures.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 6)
 
 1. THE Build_Workflow SHALL migrate and update GitHub Actions workflows from Source_Project patterns
 2. THE Build_Workflow SHALL support multi-architecture builds using Docker Buildx
@@ -100,7 +100,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want configurable runtime parameters, so that I can customize container behavior for different deployment scenarios.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 7)
 
 1. THE Runtime_Configuration SHALL support PUID and PGID parameters for user mapping
 2. THE Runtime_Configuration SHALL support KEEPALIVE parameter for container persistence
@@ -114,7 +114,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want secure package installation and management, so that I can ensure container security and compliance.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 8)
 
 1. THE Package_Management SHALL use dnf package manager with proper repository configuration
 2. THE Package_Management SHALL enable CRB, devel, and extras repositories for comprehensive package access
@@ -127,7 +127,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want all code to follow AI standards, so that I can maintain consistent code quality and git workflow.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 9)
 
 1. THE AI_Standards SHALL follow all rules defined in rocky/.agent/rules/ for coding standards
 2. THE AI_Standards SHALL use conventional commit messages with proper type and scope
@@ -140,7 +140,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want comprehensive documentation, so that I can understand and maintain the Docker image ecosystem.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 10)
 
 1. THE Documentation SHALL create README.md files in English for technical reference
 2. THE Documentation SHALL create README_zh-CN.md files in Simplified Chinese for user accessibility
@@ -153,7 +153,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want to parse Docker configuration files and environment variables, so that I can properly configure container runtime behavior.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 11)
 
 1. WHEN a valid environment configuration is provided, THE Environment_Parser SHALL parse it into a Configuration object
 2. WHEN an invalid environment configuration is provided, THE Environment_Parser SHALL return a descriptive error
@@ -166,7 +166,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 **User Story:** As a developer, I want validation of the migration process, so that I can ensure all functionality is preserved and improved.
 
-#### Acceptance Criteria
+#### Acceptance Criteria (Requirement 12)
 
 1. THE Migration_Validation SHALL verify all essential files are transferred correctly
 2. THE Migration_Validation SHALL test Docker image builds for all versions and architectures

@@ -252,7 +252,7 @@ The Rocky Linux Docker migration has been **SUCCESSFULLY COMPLETED** with all 12
 
 The new rocky project structure provides a robust, scalable, and maintainable foundation for Rocky Linux Docker images with support for multiple versions and architectures.
 
-**Migration Status: ✅ COMPLETE AND VALIDATED**
+## Migration Status: ✅ COMPLETE AND VALIDATED
 
 ---
 
