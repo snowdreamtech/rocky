@@ -51,9 +51,9 @@ This migration transformed a single-version Docker setup into a comprehensive, m
 ### Supported Versions
 | Version | Base Image | Tag Format | Architectures | Status |
 |---------|------------|------------|---------------|--------|
-| 8 | rockylinux/rockylinux:8.10-minimal | `8-v8.10.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
-| 9 | rockylinux/rockylinux:9.7-minimal | `9-v9.7.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
-| 10 | rockylinux/rockylinux:10.1-minimal | `10-v10.1.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
+| 8 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
+| 9 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
+| 10 | rockylinux/rockylinux:10.1 | `10-v10.1.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
 
 ### Repository Configuration
 | Version | PowerTools | CRB | Devel | Extras | EPEL |

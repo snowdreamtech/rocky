@@ -71,10 +71,10 @@ This document validates the successful migration from rocky0 to rocky project wi
 - [x] 2.5: Consistent file naming and organization
 
 ### ✅ Requirement 3: Base Image and Version Configuration
-- [x] 3.1: Rocky Linux minimal images (FROM rockylinux/rockylinux:X.Y-minimal)
-- [x] 3.2: Version 8 uses rockylinux/rockylinux:8.10-minimal
-- [x] 3.3: Version 9 uses rockylinux/rockylinux:9.7-minimal
-- [x] 3.4: Version 10 uses rockylinux/rockylinux:10.1-minimal
+- [x] 3.1: Rocky Linux minimal images (FROM rockylinux/rockylinux:X.Y)
+- [x] 3.2: Version 8 uses rockylinux/rockylinux:8.10
+- [x] 3.3: Version 9 uses rockylinux/rockylinux:9.7
+- [x] 3.4: Version 10 uses rockylinux/rockylinux:10.1
 - [x] 3.5: Three-digit format (8.10.0, 9.7.0, 10.1.0) for Docker image tags
 - [x] 3.6: Docker image tags like 8-v8.10.0, 9-v9.7.0, 10-v10.1.0
 
