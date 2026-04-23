@@ -297,7 +297,7 @@ jobs:
             BUILDTIME=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
             REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
-          platforms: ${{ matrix.version == '10' && 'linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/riscv64' || 'linux/amd64,linux/arm64,linux/ppc64le,linux/s390x' }}
+          platforms: ${{ matrix.version == '8' && 'linux/amd64,linux/arm64/v8' || matrix.version == '9' && 'linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x' || matrix.version == '10' && 'linux/amd64,linux/arm64/v8,linux/ppc64le,linux/riscv64,linux/s390x' || 'linux/amd64,linux/arm64/v8' }}
           provenance: true
           sbom: true
           push: ${{ (github.event_name == 'workflow_dispatch' && inputs.push_images) || (github.event_name != 'workflow_dispatch' && (contains(fromJSON('["refs/heads/main", "refs/heads/dev"]'), github.ref) || startsWith(github.ref, 'refs/tags/') || github.event_name == 'schedule')) }}
@@ -349,7 +349,7 @@ jobs:
 
             # Count platforms and set expected count based on Rocky version
             platform_count=$(echo "${manifest}" | grep -c "Platform:" || echo "0")
-            expected_count=${{ matrix.version == '10' && '5' || '4' }}
+            expected_count=${{ matrix.version == '8' && '2' || matrix.version == '9' && '4' || matrix.version == '10' && '5' || '2' }}
             echo "platform_count=${platform_count}" >> "$GITHUB_OUTPUT"
 
             if [ "${platform_count}" -eq "${expected_count}" ]; then
@@ -637,7 +637,7 @@ jobs:
               if [ -n "${{ steps.manifest-check.outputs.platform_count }}" ]; then
                 echo "### 🔍 Manifest Verification"
                 echo ""
-                echo "- **Platforms Verified:** ${{ steps.manifest-check.outputs.platform_count }}/${{ matrix.version == '10' && '5' || '4' }}"
+                echo "- **Platforms Verified:** ${{ steps.manifest-check.outputs.platform_count }}/${{ matrix.version == '8' && '2' || matrix.version == '9' && '4' || matrix.version == '10' && '5' || '2' }}"
                 echo "- **Status:** ${{ steps.manifest-check.outputs.status }}"
                 echo ""
               fi
@@ -650,7 +650,7 @@ jobs:
               echo ""
               echo "### 🏗️ Build Configuration"
               echo ""
-              echo "- **Platforms:** ${{ matrix.version == '10' && '5 architectures (amd64, arm64, ppc64le, s390x, riscv64)' || '4 architectures (amd64, arm64, ppc64le, s390x)' }}"
+              echo "- **Platforms:** ${{ matrix.version == '8' && '2 architectures (amd64, arm64/v8)' || matrix.version == '9' && '4 architectures (amd64, arm64/v8, ppc64le, s390x)' || matrix.version == '10' && '5 architectures (amd64, arm64/v8, ppc64le, riscv64, s390x)' || '2 architectures (amd64, arm64/v8)' }}"
               echo "- **Registries:** DockerHub (${{ steps.login-dockerhub.outcome }}), GHCR (${{ steps.login-ghcr.outcome }}), Quay.io (${{ steps.login-quay.outcome }})"
               echo "- **Cache Sources:** Current branch + main + dev"
               echo ""
