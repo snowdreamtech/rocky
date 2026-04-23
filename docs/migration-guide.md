@@ -54,9 +54,9 @@ rocky/
 
 | Version | Old | New |
 |---------|-----|-----|
-| 8 | N/A | `rockylinux/rockylinux:8.10-minimal` |
-| 9 | N/A | `rockylinux/rockylinux:9.7-minimal` |
-| 10 | `rockylinux/rockylinux:10.1` | `rockylinux/rockylinux:10.1-minimal` |
+| 8 | N/A | `rockylinux/rockylinux:8.10` |
+| 9 | N/A | `rockylinux/rockylinux:9.7` |
+| 10 | `rockylinux/rockylinux:10.1` | `rockylinux/rockylinux:10.1` |
 
 ### 3. Tagging Strategy
 
