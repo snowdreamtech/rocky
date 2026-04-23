@@ -1,6 +1,15 @@
+# Rocky Linux Base Image
+
+# Technical Purpose: High-performance, multi-architecture base image for Snowdream Tech projects.
+# Design:
+#   - Optimized layering for minimal image size.
+#   - Decoupled initialization via entrypoint.d mechanism.
+#   - Native support for PUID/PGID user mapping.
+#   - Pre-installed with essential dev/ops tooling (Git, Curl, Sudo, etc.).
+
 FROM rockylinux/rockylinux:8.10-minimal
 
-# Build Arguments
+# Build-time Configuration
 ARG BUILDTIME \
     VERSION \
     REVISION \
@@ -15,7 +24,7 @@ ARG BUILDTIME \
     USER=root \
     WORKDIR=/root
 
-# OCI annotations following alpine project patterns
+# Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="Rocky Linux 8 Base Image" \
     org.opencontainers.image.description="Professional Docker Image packaging for Rocky Linux 8.10. Supports amd64, arm64, ppc64le, s390x." \
@@ -29,7 +38,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.revision="${REVISION}" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/rocky"
 
-# Environment Variables
+# Runtime Environment Configuration
 ENV KEEPALIVE=${KEEPALIVE} \
     CAP_NET_BIND_SERVICE=${CAP_NET_BIND_SERVICE} \
     LANG=${LANG} \
@@ -41,22 +50,23 @@ ENV KEEPALIVE=${KEEPALIVE} \
     USER=${USER} \
     WORKDIR=${WORKDIR}
 
-# Switch to root user
-USER root
-
-# Set working directory
-WORKDIR /root
-
-# Package Installation with standardized dnf configuration
+# Infrastructure & Tooling Setup
+# Includes standard repositories and essential system packages.
 RUN set -eux \
     && dnf install -y dnf-plugins-core \
     && dnf config-manager --set-enabled powertools \
+    && dnf config-manager --set-enabled devel \
+    && dnf config-manager --set-enabled extras \
     && dnf -y --allowerasing install epel-release \
     && dnf -y --allowerasing update \
     && dnf -y --allowerasing install \
+    bash \
+    zsh \
+    nano \
+    rsync \
     lsb-release \
-    procps-ng \
     sudo \
+    procps-ng \
     vim-enhanced \
     zip \
     unzip \
@@ -72,19 +82,17 @@ RUN set -eux \
     wget \
     curl \
     git \
-    libcap \
     bind-utils \
     nmap-ncat \
     traceroute \
     iputils \
     net-tools \
     lsof \
+    libcap \
     ca-certificates \
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
-    && rm -rf /var/cache/dnf \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/*
+    && rm -rf /var/cache/dnf /tmp/* /var/tmp/*
 
 # gosu Installation with architecture awareness
 ENV GOSU_VERSION=1.19
@@ -110,17 +118,24 @@ RUN set -eux; \
     gosu --version; \
     gosu nobody true
 
-# Copy configuration files
-COPY vimrc.local /etc/vimrc.local
+# System Initialization logic (User mapping, permissions) is handled in entrypoint.d scripts.
+# This keeps the Dockerfile clean and the process extensible.
 
-# Copy entrypoint system
+# Container Orchestration Files
 COPY entrypoint.d /usr/local/bin/entrypoint.d
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
-# Set permissions
+# Ensure execution bits are correctly set for all entrypoint scripts.
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
     && chmod +x /usr/local/bin/entrypoint.d/*
 
-# Set entrypoint
+# Standard Healthcheck (Verification of core system responsiveness)
+HEALTHCHECK NONE
+
+# Process Execution
+USER root
+WORKDIR /root
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/bin/bash"]
+
+# Trigger patch version bump
