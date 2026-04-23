@@ -70,15 +70,15 @@ jobs:
         include:
           - version: "8"
             rocky_version: "8.10.0"
-            base_image: "rockylinux/rockylinux:8.10-minimal"
+            base_image: "rockylinux/rockylinux:8.10"
             is_latest: false
           - version: "9"
             rocky_version: "9.7.0"
-            base_image: "rockylinux/rockylinux:9.7-minimal"
+            base_image: "rockylinux/rockylinux:9.7"
             is_latest: false
           - version: "10"
             rocky_version: "10.1.0"
-            base_image: "rockylinux/rockylinux:10.1-minimal"
+            base_image: "rockylinux/rockylinux:10.1"
             is_latest: true
     concurrency:
       group: docker-${{ github.workflow }}-${{ github.event_name == 'schedule' && 'nightly' || github.ref }}-${{ matrix.version }}
