@@ -1,0 +1,128 @@
+FROM rockylinux/rockylinux:10.1-minimal
+
+# Build Arguments
+ARG BUILDTIME \
+    VERSION \
+    REVISION \
+    KEEPALIVE=0 \
+    CAP_NET_BIND_SERVICE=0 \
+    LANG=C.UTF-8 \
+    UMASK=022 \
+    DEBUG=false \
+    PASSWORDLESS_SUDO=false \
+    PGID=0 \
+    PUID=0 \
+    USER=root \
+    WORKDIR=/root
+
+# OCI annotations following alpine project patterns
+LABEL org.opencontainers.image.authors="Snowdream Tech" \
+    org.opencontainers.image.title="Rocky Linux 10 Base Image" \
+    org.opencontainers.image.description="Professional Docker Image packaging for Rocky Linux 10.1. Supports amd64, arm64, ppc64le, s390x." \
+    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/rocky" \
+    org.opencontainers.image.base.name="snowdreamtech/rocky:10" \
+    org.opencontainers.image.licenses="MIT" \
+    org.opencontainers.image.source="https://github.com/snowdreamtech/rocky" \
+    org.opencontainers.image.vendor="Snowdream Tech" \
+    org.opencontainers.image.version="${VERSION}" \
+    org.opencontainers.image.created="${BUILDTIME}" \
+    org.opencontainers.image.revision="${REVISION}" \
+    org.opencontainers.image.url="https://github.com/snowdreamtech/rocky"
+
+# Environment Variables
+ENV KEEPALIVE=${KEEPALIVE} \
+    CAP_NET_BIND_SERVICE=${CAP_NET_BIND_SERVICE} \
+    LANG=${LANG} \
+    UMASK=${UMASK} \
+    DEBUG=${DEBUG} \
+    PASSWORDLESS_SUDO=${PASSWORDLESS_SUDO} \
+    PGID=${PGID} \
+    PUID=${PUID} \
+    USER=${USER} \
+    WORKDIR=${WORKDIR}
+
+# Switch to root user
+USER root
+
+# Set working directory
+WORKDIR /root
+
+# Package Installation with standardized dnf configuration
+RUN set -eux \
+    && dnf install -y dnf-plugins-core \
+    && dnf config-manager --set-enabled crb \
+    && dnf config-manager --set-enabled devel \
+    && dnf config-manager --set-enabled extras \
+    && dnf -y --allowerasing install epel-release \
+    && dnf -y --allowerasing update \
+    && dnf -y --allowerasing install \
+    lsb-release \
+    procps-ng \
+    sudo \
+    vim-enhanced \
+    zip \
+    unzip \
+    bzip2 \
+    xz \
+    file \
+    gzip \
+    jq \
+    tzdata \
+    openssl \
+    gnupg2 \
+    sysstat \
+    wget \
+    curl \
+    git \
+    libcap \
+    bind-utils \
+    nmap-ncat \
+    traceroute \
+    iputils \
+    net-tools \
+    lsof \
+    ca-certificates \
+    && dnf -y --allowerasing autoremove \
+    && dnf -y --allowerasing clean all \
+    && rm -rf /var/cache/dnf \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/*
+
+# gosu Installation with architecture awareness
+ENV GOSU_VERSION=1.19
+RUN set -eux; \
+    rpmArch="$(rpm --query --queryformat='%{ARCH}' rpm)"; \
+    case "$rpmArch" in \
+        aarch64) dpkgArch='arm64' ;; \
+        armv[67]*) dpkgArch='armhf' ;; \
+        i[3456]86) dpkgArch='i386' ;; \
+        ppc64le) dpkgArch='ppc64el' ;; \
+        riscv64 | s390x | loongarch64) dpkgArch="$rpmArch" ;; \
+        x86_64) dpkgArch='amd64' ;; \
+        *) echo >&2 "error: unknown/unsupported architecture '$rpmArch'"; exit 1 ;; \
+    esac; \
+    wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch"; \
+    wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc"; \
+    export GNUPGHOME="$(mktemp -d)"; \
+    gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4; \
+    gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu; \
+    gpgconf --kill all; \
+    rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc; \
+    chmod +x /usr/local/bin/gosu; \
+    gosu --version; \
+    gosu nobody true
+
+# Copy configuration files
+COPY vimrc.local /etc/vimrc.local
+
+# Copy entrypoint system
+COPY entrypoint.d /usr/local/bin/entrypoint.d
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+# Set permissions
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
+    && chmod +x /usr/local/bin/entrypoint.d/*
+
+# Set entrypoint
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["/bin/bash"]
