@@ -531,7 +531,7 @@ FROM rockylinux/rockylinux:10.1
 
 # Version-specific packages for Rocky 10
 RUN dnf -y --allowerasing install \
-    redhat-lsb-core \
+    lsb-release \
     procps-ng \
     sudo \
     vim-enhanced \
