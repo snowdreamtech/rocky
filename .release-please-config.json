@@ -16,7 +16,7 @@
     },
     "docker/9": {
       "release-type": "simple",
-      "component": "9", 
+      "component": "9",
       "include-component-in-tag": true,
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
@@ -53,13 +53,13 @@
       "hidden": false
     },
     {
-      "type": "security", 
+      "type": "security",
       "section": "🛡️ Security Updates",
       "hidden": false
     },
     {
       "type": "sec",
-      "section": "🛡️ Security Updates", 
+      "section": "🛡️ Security Updates",
       "hidden": false
     },
     {
@@ -84,7 +84,7 @@
     },
     {
       "type": "docs",
-      "section": "📖 Documentation", 
+      "section": "📖 Documentation",
       "hidden": false
     },
     {
