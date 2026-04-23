@@ -122,6 +122,7 @@ RUN set -eux; \
 # This keeps the Dockerfile clean and the process extensible.
 
 # Container Orchestration Files
+COPY vimrc.local /etc/vimrc.local
 COPY entrypoint.d /usr/local/bin/entrypoint.d
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
