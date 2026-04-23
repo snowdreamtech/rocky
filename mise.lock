@@ -664,7 +664,7 @@ version = "0.22.1"
 backend = "npm:markdownlint-cli2"
 
 [[tools."npm:pnpm"]]
-version = "10.33.1"
+version = "10.33.2"
 backend = "npm:pnpm"
 
 [[tools."npm:prettier"]]
@@ -676,7 +676,7 @@ version = "3.6.1"
 backend = "npm:sort-package-json"
 
 [[tools."npm:stylelint"]]
-version = "17.8.0"
+version = "17.9.0"
 backend = "npm:stylelint"
 
 [[tools."pipx:clang-format"]]
