@@ -59,9 +59,9 @@ rocky/
 
 Each Rocky Linux version uses minimal base images for security and size optimization:
 
-- **Rocky 8**: `rockylinux/rockylinux:8.10-minimal`
-- **Rocky 9**: `rockylinux/rockylinux:9.7-minimal`
-- **Rocky 10**: `rockylinux/rockylinux:10.1-minimal`
+- **Rocky 8**: `rockylinux/rockylinux:8.10`
+- **Rocky 9**: `rockylinux/rockylinux:9.7`
+- **Rocky 10**: `rockylinux/rockylinux:10.1`
 
 #### 2. Entrypoint System Architecture
 
@@ -153,7 +153,7 @@ Each version-specific Dockerfile follows this standardized structure:
 
 ```dockerfile
 # Rocky Linux Base Image - Version X
-FROM rockylinux/rockylinux:X.Y-minimal
+FROM rockylinux/rockylinux:X.Y
 
 # Build Arguments
 ARG BUILDTIME \
@@ -499,7 +499,7 @@ jobs:
 #### Rocky Linux 8.10 Configuration
 
 ```dockerfile
-FROM rockylinux/rockylinux:8.10-minimal
+FROM rockylinux/rockylinux:8.10
 
 # Version-specific packages for Rocky 8
 RUN dnf -y --allowerasing install \
@@ -513,7 +513,7 @@ RUN dnf -y --allowerasing install \
 #### Rocky Linux 9.7 Configuration
 
 ```dockerfile
-FROM rockylinux/rockylinux:9.7-minimal
+FROM rockylinux/rockylinux:9.7
 
 # Version-specific packages for Rocky 9
 RUN dnf -y --allowerasing install \
@@ -527,7 +527,7 @@ RUN dnf -y --allowerasing install \
 #### Rocky Linux 10.1 Configuration
 
 ```dockerfile
-FROM rockylinux/rockylinux:10.1-minimal
+FROM rockylinux/rockylinux:10.1
 
 # Version-specific packages for Rocky 10
 RUN dnf -y --allowerasing install \

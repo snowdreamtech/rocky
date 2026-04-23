@@ -10,7 +10,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 - **Target_Project**: The rocky project that will receive the migrated and standardized code
 - **Reference_Project**: The alpine project serving as the standard template for structure alignment
 - **Docker_Structure**: The organized directory hierarchy containing version-specific Docker configurations
-- **Base_Image**: Rocky Linux minimal container images used as foundation (e.g., rockylinux/rockylinux:10.1-minimal)
+- **Base_Image**: Rocky Linux minimal container images used as foundation (e.g., rockylinux/rockylinux:10.1)
 - **Version_Tag**: Three-digit version format for Docker image identification (e.g., 8.10.0, 9.7.0, 10.1.0)
 - **Architecture_Support**: Multi-platform container support for different CPU architectures
 - **Entrypoint_System**: Modular initialization system using docker-entrypoint.sh and entrypoint.d/ scripts
@@ -50,10 +50,10 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 
 #### Acceptance Criteria
 
-1. THE Base_Image SHALL use Rocky Linux minimal images (FROM rockylinux/rockylinux:X.Y-minimal format)
-2. WHEN configuring version 8, THE Base_Image SHALL use rockylinux/rockylinux:8.10-minimal
-3. WHEN configuring version 9, THE Base_Image SHALL use rockylinux/rockylinux:9.7-minimal
-4. WHEN configuring version 10, THE Base_Image SHALL use rockylinux/rockylinux:10.1-minimal
+1. THE Base_Image SHALL use Rocky Linux minimal images (FROM rockylinux/rockylinux:X.Y format)
+2. WHEN configuring version 8, THE Base_Image SHALL use rockylinux/rockylinux:8.10
+3. WHEN configuring version 9, THE Base_Image SHALL use rockylinux/rockylinux:9.7
+4. WHEN configuring version 10, THE Base_Image SHALL use rockylinux/rockylinux:10.1
 5. THE Version_Tag SHALL implement three-digit format (8.10.0, 9.7.0, 10.1.0) for Docker image tags
 6. THE Version_Tag SHALL support Docker image tags like 8-v8.10.0, 9-v9.7.0, 10-v10.1.0
 

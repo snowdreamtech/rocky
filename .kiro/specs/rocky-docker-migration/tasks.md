@@ -19,9 +19,9 @@ The migration establishes a standardized Docker ecosystem for Rocky Linux versio
   - _Commit: `feat(docker): initialize multi-version directory structure`_
 
 - [x] 2. Migrate and standardize Dockerfile templates
-  - Create docker/8/Dockerfile for Rocky Linux 8.10 with rockylinux/rockylinux:8.10-minimal base
-  - Create docker/9/Dockerfile for Rocky Linux 9.7 with rockylinux/rockylinux:9.7-minimal base
-  - Create docker/10/Dockerfile for Rocky Linux 10.1 with rockylinux/rockylinux:10.1-minimal base
+  - Create docker/8/Dockerfile for Rocky Linux 8.10 with rockylinux/rockylinux:8.10 base
+  - Create docker/9/Dockerfile for Rocky Linux 9.7 with rockylinux/rockylinux:9.7 base
+  - Create docker/10/Dockerfile for Rocky Linux 10.1 with rockylinux/rockylinux:10.1 base
   - Implement standardized OCI annotations following alpine project patterns
   - Configure build arguments and environment variables consistently across versions
   - _Requirements: 1.1, 3.1, 3.2, 3.3, 3.4, 4.1, 4.6_
