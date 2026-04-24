@@ -1,11 +1,17 @@
-# Rocky Linux Docker 镜像
+# Rocky
 
+[![GitHub Release](https://img.shields.io/github/v/release/snowdreamtech/rocky?include_prereleases&sort=semver)](https://github.com/snowdreamtech/rocky/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![CodeSize](https://img.shields.io/github/languages/code-size/snowdreamtech/rocky)](https://github.com/snowdreamtech/rocky)
+[![Dependabot Enabled](https://img.shields.io/badge/Dependabot-Enabled-brightgreen?logo=dependabot)](https://github.com/snowdreamtech/rocky/blob/main/.github/dependabot.yml)
 ![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/rocky)
 ![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/rocky/latest)
 ![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/rocky)
 ![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/rocky)
 
-专业的 Rocky Linux Docker 镜像打包。支持多个版本（8、9、10）和架构（amd64、arm64、ppc64le、s390x）。
+[English](README.md) | [简体中文](README_zh-CN.md)
+
+Rocky Linux 的 Docker 镜像。支持多平台架构：(amd64, arm64, ppc64le, s390x)
 
 ## 支持的版本
 
