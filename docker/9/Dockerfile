@@ -7,7 +7,7 @@
 #   - Native support for PUID/PGID user mapping.
 #   - Pre-installed with essential dev/ops tooling (Git, Curl, Sudo, etc.).
 
-FROM rockylinux/rockylinux:9.7
+FROM rockylinux/rockylinux:9.8
 
 # Build-time Configuration
 ARG BUILDTIME \
@@ -27,7 +27,7 @@ ARG BUILDTIME \
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="Rocky Linux 9 Base Image" \
-    org.opencontainers.image.description="Professional Docker Image packaging for Rocky Linux 9.7. Supports amd64, arm64, ppc64le, s390x." \
+    org.opencontainers.image.description="Professional Docker Image packaging for Rocky Linux 9.8. Supports amd64, arm64, ppc64le, s390x." \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/rocky" \
     org.opencontainers.image.base.name="snowdreamtech/rocky:9" \
     org.opencontainers.image.licenses="MIT" \
