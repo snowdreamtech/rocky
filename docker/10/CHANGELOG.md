@@ -5,6 +5,13 @@ All notable changes to the Rocky Linux 10 Docker image will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [10.1.1](https://github.com/snowdreamtech/rocky/compare/10-v10.1.0...10-v10.1.1) (2026-06-14)
+
+
+### ♻️ Miscellaneous Chores
+
+* **main:** release 0.14.0 ([043d2a4](https://github.com/snowdreamtech/rocky/commit/043d2a4202505e42c645e899c6731f5fb8f52c8e))
+
 ## [Unreleased]
 
 ### Added
