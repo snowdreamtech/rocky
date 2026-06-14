@@ -96,18 +96,21 @@ services:
 ## 功能特性
 
 ### 安全性
+
 - **gosu 集成**：通过 GPG 验证实现安全的权限降级
 - **用户映射**：灵活的 PUID/PGID 映射用于文件权限管理
 - **最小基础**：使用 Rocky Linux 最小镜像减少攻击面
 - **安全扫描**：使用 Trivy 进行自动化漏洞扫描
 
 ### 架构
+
 - **多架构支持**：原生支持 amd64、arm64、ppc64le、s390x
 - **模块化入口点**：Alpine 风格的初始化系统，使用 entrypoint.d/
 - **调试支持**：通过 DEBUG 环境变量提供全面的日志记录
 - **信号处理**：正确的信号转发以实现优雅关闭
 
 ### 包管理
+
 - **仓库配置**：正确的 dnf 仓库设置（CRB、devel、extras、EPEL）
 - **基础工具**：预安装的开发和运维工具
 - **版本特定**：针对每个 Rocky Linux 版本优化的包选择
@@ -192,18 +195,21 @@ docker run --rm -e DEBUG=true \
 ### 常见问题
 
 #### 权限被拒绝错误
+
 ```bash
 # 确保正确的 PUID/PGID 映射
 docker run -e PUID=$(id -u) -e PGID=$(id -g) snowdreamtech/rocky:10-v10.1.0
 ```
 
 #### 容器立即退出
+
 ```bash
 # 启用保活模式
 docker run -e KEEPALIVE=1 snowdreamtech/rocky:10-v10.1.0
 ```
 
 #### 调试信息
+
 ```bash
 # 启用调试日志
 docker run -e DEBUG=true snowdreamtech/rocky:10-v10.1.0

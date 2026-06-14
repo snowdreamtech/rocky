@@ -9,12 +9,14 @@ The migration involves moving from a single-version Docker setup to a multi-vers
 ## Migration Summary
 
 ### Before (rocky0)
+
 - Single Dockerfile for Rocky Linux 10.1
 - Basic entrypoint system
 - Limited architecture support
 - Minimal CI/CD automation
 
 ### After (rocky)
+
 - Multi-version support (8, 9, 10)
 - Standardized directory structure
 - Alpine-style modular entrypoint system
@@ -27,6 +29,7 @@ The migration involves moving from a single-version Docker setup to a multi-vers
 ### 1. Directory Structure
 
 **Old Structure (rocky0):**
+
 ```
 rocky0/
 ├── Dockerfile
@@ -36,6 +39,7 @@ rocky0/
 ```
 
 **New Structure (rocky):**
+
 ```
 rocky/
 ├── docker/
@@ -61,11 +65,13 @@ rocky/
 ### 3. Tagging Strategy
 
 **Old Tags:**
+
 - `latest`
 - `10.1`
 - Version-based tags
 
 **New Tags:**
+
 - `8-v8.10.0`
 - `9-v9.7.0`
 - `10-v10.1.0`
@@ -73,12 +79,14 @@ rocky/
 
 ### 4. Environment Variables
 
-#### New Variables Added:
+#### New Variables Added
+
 - `PASSWORDLESS_SUDO`: Enable passwordless sudo for users
 - `TZ`: Timezone configuration
 - Enhanced `DEBUG` logging
 
-#### Enhanced Variables:
+#### Enhanced Variables
+
 - `DEBUG`: More comprehensive logging
 - `USER`: Better user creation logic
 - `WORKDIR`: Improved directory handling
@@ -86,6 +94,7 @@ rocky/
 ### 5. Entrypoint System
 
 **Enhanced Features:**
+
 - Alpine-style orchestration
 - Improved debug logging
 - Better error handling
@@ -107,11 +116,13 @@ rocky/
 #### 1. Update Docker Commands
 
 **Old:**
+
 ```bash
 docker run -d snowdreamtech/rocky:latest
 ```
 
 **New:**
+
 ```bash
 docker run -d snowdreamtech/rocky:10-v10.1.0
 ```
@@ -119,6 +130,7 @@ docker run -d snowdreamtech/rocky:10-v10.1.0
 #### 2. Update Docker Compose
 
 **Old:**
+
 ```yaml
 services:
   rocky:
@@ -126,6 +138,7 @@ services:
 ```
 
 **New:**
+
 ```yaml
 services:
   rocky:
@@ -137,6 +150,7 @@ services:
 #### 3. Environment Variable Updates
 
 **Enhanced Debug Mode:**
+
 ```bash
 # Old: Basic debug
 docker run -e DEBUG=true snowdreamtech/rocky:latest
@@ -146,6 +160,7 @@ docker run -e DEBUG=true snowdreamtech/rocky:10-v10.1.0
 ```
 
 **New Timezone Support:**
+
 ```bash
 docker run -e TZ=Asia/Shanghai snowdreamtech/rocky:10-v10.1.0
 ```
@@ -155,11 +170,13 @@ docker run -e TZ=Asia/Shanghai snowdreamtech/rocky:10-v10.1.0
 #### 1. Build Process Changes
 
 **Old Build:**
+
 ```bash
 docker build -t rocky:local .
 ```
 
 **New Build:**
+
 ```bash
 # Build specific version
 docker build -t rocky:local ./docker/10
@@ -173,6 +190,7 @@ docker buildx build \
 #### 2. CI/CD Integration
 
 The new structure includes comprehensive GitHub Actions workflows:
+
 - Automated multi-architecture builds
 - Security scanning with Trivy
 - Comprehensive testing suite
@@ -181,6 +199,7 @@ The new structure includes comprehensive GitHub Actions workflows:
 #### 3. Development Workflow
 
 **Testing Multiple Versions:**
+
 ```bash
 # Test Rocky 8
 docker build -t rocky:8-test ./docker/8
@@ -216,20 +235,24 @@ docker run --rm rocky:10-test /bin/bash -c "cat /etc/os-release"
 ## Breaking Changes
 
 ### 1. Tag Format Change
+
 - **Impact**: Existing automation using `latest` or simple version tags
 - **Solution**: Update to new format (`8-v8.10.0`, `9-v9.7.0`, `10-v10.1.0`)
 
 ### 2. Base Image Change
+
 - **Impact**: Rocky 10 now uses minimal base image
 - **Solution**: Verify application compatibility with minimal image
 
 ### 3. Repository Structure
+
 - **Impact**: Custom builds referencing root Dockerfile
 - **Solution**: Update build context to version-specific directories
 
 ## Testing Your Migration
 
 ### 1. Functionality Test
+
 ```bash
 # Test basic functionality
 docker run --rm snowdreamtech/rocky:10-v10.1.0 \
@@ -248,6 +271,7 @@ docker run --rm -e TZ=Asia/Shanghai \
 ```
 
 ### 2. Performance Test
+
 ```bash
 # Compare startup times
 time docker run --rm snowdreamtech/rocky:10-v10.1.0 /bin/true
@@ -258,6 +282,7 @@ time docker run --rm -e DEBUG=true \
 ```
 
 ### 3. Security Test
+
 ```bash
 # Test gosu functionality
 docker run --rm snowdreamtech/rocky:10-v10.1.0 \
@@ -274,12 +299,14 @@ docker run --rm -e PUID=1000 -e PGID=1000 \
 If issues are encountered during migration:
 
 ### 1. Immediate Rollback
+
 ```bash
 # Use old rocky0 images temporarily
 docker run -d snowdreamtech/rocky:old-tag
 ```
 
 ### 2. Gradual Migration
+
 ```bash
 # Test new images in non-production first
 docker run -d snowdreamtech/rocky:10-v10.1.0 # Test environment
@@ -287,6 +314,7 @@ docker run -d snowdreamtech/rocky:10-v10.1.0 # Test environment
 ```
 
 ### 3. Hybrid Approach
+
 ```bash
 # Use different versions for different services
 docker-compose.yml:
@@ -299,16 +327,20 @@ docker-compose.yml:
 ## Support and Resources
 
 ### Documentation
+
 - [README.md](../README.md) - Technical documentation
 - [README_zh-CN.md](../README_zh-CN.md) - Chinese user guide
 - [GitHub Issues](https://github.com/snowdreamtech/rocky/issues) - Bug reports and feature requests
 
 ### Community
+
 - [GitHub Discussions](https://github.com/snowdreamtech/rocky/discussions) - Community support
 - [Project Wiki](https://github.com/snowdreamtech/rocky/wiki) - Additional documentation
 
 ### Migration Assistance
+
 If you encounter issues during migration:
+
 1. Check the troubleshooting section in README.md
 2. Search existing GitHub issues
 3. Create a new issue with migration details
@@ -317,6 +349,7 @@ If you encounter issues during migration:
 ## Conclusion
 
 The migration to the new rocky project structure provides:
+
 - Better version management
 - Enhanced security features
 - Improved CI/CD automation

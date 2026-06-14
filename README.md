@@ -96,18 +96,21 @@ services:
 ## Features
 
 ### Security
+
 - **gosu Integration**: Secure privilege dropping with GPG verification
 - **User Mapping**: Flexible PUID/PGID mapping for file permissions
 - **Minimal Base**: Uses Rocky Linux minimal images for reduced attack surface
 - **Security Scanning**: Automated vulnerability scanning with Trivy
 
 ### Architecture
+
 - **Multi-Architecture**: Native support for amd64, arm64, ppc64le, s390x
 - **Modular Entrypoint**: Alpine-style initialization system with entrypoint.d/
 - **Debug Support**: Comprehensive logging with DEBUG environment variable
 - **Signal Handling**: Proper signal forwarding for graceful shutdown
 
 ### Package Management
+
 - **Repository Configuration**: Proper dnf repository setup (CRB, devel, extras, EPEL)
 - **Essential Tools**: Pre-installed development and operational tools
 - **Version Specific**: Optimized package selection for each Rocky Linux version
@@ -192,18 +195,21 @@ docker run --rm -e DEBUG=true \
 ### Common Issues
 
 #### Permission Denied Errors
+
 ```bash
 # Ensure proper PUID/PGID mapping
 docker run -e PUID=$(id -u) -e PGID=$(id -g) snowdreamtech/rocky:10-v10.1.0
 ```
 
 #### Container Exits Immediately
+
 ```bash
 # Enable keepalive mode
 docker run -e KEEPALIVE=1 snowdreamtech/rocky:10-v10.1.0
 ```
 
 #### Debug Information
+
 ```bash
 # Enable debug logging
 docker run -e DEBUG=true snowdreamtech/rocky:10-v10.1.0

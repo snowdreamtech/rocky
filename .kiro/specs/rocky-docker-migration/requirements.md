@@ -80,7 +80,7 @@ This document defines the requirements for migrating Rocky Linux Docker images f
 2. WHEN building for version 8, THE Architecture_Support SHALL include platforms available for Rocky Linux 8.10
 3. WHEN building for version 9, THE Architecture_Support SHALL include platforms available for Rocky Linux 9.7
 4. WHEN building for version 10, THE Architecture_Support SHALL include platforms available for Rocky Linux 10.1
-5. THE Architecture_Support SHALL reference https://www.rockylinux.cn/download for platform availability verification
+5. THE Architecture_Support SHALL reference <https://www.rockylinux.cn/download> for platform availability verification
 6. THE Architecture_Support SHALL implement platform-specific optimizations where applicable
 
 ### Requirement 6: Build Workflow and CI/CD Configuration

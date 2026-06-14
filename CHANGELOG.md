@@ -6,6 +6,73 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.0](https://github.com/snowdreamtech/template/compare/v0.13.1...v0.14.0) (2026-06-13)
+
+
+### Features
+
+* add UNIRTM_HOOK_ALLOW_MISSING=1 to .unirtm.toml ([a1ceab9](https://github.com/snowdreamtech/template/commit/a1ceab9944841fe017617af3d39a777358ac2a1c))
+
+
+### Bug Fixes
+
+* **tasks:** make osv-scanner recursive and allow missing lockfiles ([fc5913d](https://github.com/snowdreamtech/template/commit/fc5913dd652471ee4ffc343646a7a5ca3f915fec))
+
+
+### Miscellaneous Chores
+
+* **docs:** explicitly add esbuild and vite to devDependencies for tracking ([ea50d16](https://github.com/snowdreamtech/template/commit/ea50d166a8f149e4892180ffb28f0259a7a95367))
+
+## [0.14.0](https://github.com/snowdreamtech/template/compare/v0.13.1...v0.14.0) (2026-06-13)
+
+
+### Features
+
+* add UNIRTM_HOOK_ALLOW_MISSING=1 to .unirtm.toml ([a1ceab9](https://github.com/snowdreamtech/template/commit/a1ceab9944841fe017617af3d39a777358ac2a1c))
+
+## [0.13.1](https://github.com/snowdreamtech/template/compare/v0.13.0...v0.13.1) (2026-04-29)
+
+
+### Bug Fixes
+
+* **ci:** disable shellcheck integration in actionlint to prevent Windows hang ([1d711d8](https://github.com/snowdreamtech/template/commit/1d711d8c1bc4c7482651f1abe228c970ba6f024c))
+
+## [0.13.0](https://github.com/snowdreamtech/template/compare/v0.12.0...v0.13.0) (2026-04-28)
+
+
+### Features
+
+* **ci:** enable auto-merge for ALL dependabot updates including major ([9c8bae2](https://github.com/snowdreamtech/template/commit/9c8bae233e0e8834a611370dc897ac67db64057a))
+* **deps:** consolidate all dependabot updates into single PR ([e753902](https://github.com/snowdreamtech/template/commit/e753902201ce2f059747de31b59681442bb149b0))
+
+
+### Bug Fixes
+
+* **deps:** correct devcontainers directory to root ([9d83806](https://github.com/snowdreamtech/template/commit/9d838067e3fb82e84c1107f0036cc4a7b7855f56))
+* **deps:** exclude .devcontainer from docker ecosystem detection ([67e96c3](https://github.com/snowdreamtech/template/commit/67e96c3c1b94c72811d81af229a017f927fd3de4))
+
+## [0.12.0](https://github.com/snowdreamtech/template/compare/v0.11.0...v0.12.0) (2026-04-27)
+
+
+### Features
+
+* **security:** add CDN and download mirror endpoints to harden runner ([3ff8a5d](https://github.com/snowdreamtech/template/commit/3ff8a5d3d073a57bb4681c619e94aa797983ef23))
+* **security:** add DockerHub endpoints to harden runner ([48b6416](https://github.com/snowdreamtech/template/commit/48b6416ced65a68194a50d4ffb406c7e7257a37f))
+
+## [0.11.0](https://github.com/snowdreamtech/template/compare/v0.10.0...v0.11.0) (2026-04-24)
+
+
+### Features
+
+* **ci:** add GitHub API rate limit info to summary reports ([8c4293a](https://github.com/snowdreamtech/template/commit/8c4293afbd82f74278af2db4ecb77abf6a9b1aab))
+* **deps:** optimize dependabot configuration and grouping strategy ([900f3af](https://github.com/snowdreamtech/template/commit/900f3aff782a709643b81f9721a45da7a0d10a87))
+
+
+### Bug Fixes
+
+* **ci:** replace head -n -1 with sed for macOS compatibility ([67aaa95](https://github.com/snowdreamtech/template/commit/67aaa95afe68cdfcade622a3478fe3b0b000ccca))
+* **deps:** correct indentation in test script for editorconfig compliance ([0a44088](https://github.com/snowdreamtech/template/commit/0a44088beafca6ea70111f98062e1889d21c069f))
+
 ## [0.10.0](https://github.com/snowdreamtech/template/compare/v0.9.2...v0.10.0) (2026-04-22)
 
 

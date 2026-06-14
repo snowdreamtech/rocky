@@ -145,6 +145,7 @@ The migration establishes a standardized Docker ecosystem for Rocky Linux versio
 ### Architecture Support
 
 Each Rocky Linux version supports the following architectures based on official availability:
+
 - **Rocky 8.10**: linux/amd64, linux/arm64, linux/ppc64le, linux/s390x
 - **Rocky 9.7**: linux/amd64, linux/arm64, linux/ppc64le, linux/s390x
 - **Rocky 10.1**: linux/amd64, linux/arm64, linux/ppc64le, linux/s390x
@@ -152,6 +153,7 @@ Each Rocky Linux version supports the following architectures based on official 
 ### Version Tagging Strategy
 
 Docker images follow consistent tagging patterns:
+
 - **Version-specific**: `8-v8.10.0`, `9-v9.7.0`, `10-v10.1.0`
 - **Latest per version**: `8`, `9`, `10`
 - **Development**: `dev-8`, `dev-9`, `dev-10`

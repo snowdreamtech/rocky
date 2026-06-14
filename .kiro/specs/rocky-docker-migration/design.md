@@ -549,6 +549,7 @@ Docker image tags follow a consistent pattern:
   - `10-v10.1.0` (Rocky Linux 10.1.0)
 
 Additional tags:
+
 - **Latest per version**: `8`, `9`, `10`
 - **Overall latest**: `latest` (points to newest Rocky version)
 - **Branch tags**: `dev-8`, `dev-9`, `dev-10` for development builds
@@ -610,6 +611,7 @@ Accommodating Rocky Linux specifics while maintaining alpine alignment:
 ### Phase 1: Foundation Setup (Atomic Commits 1-3)
 
 #### Commit 1: Initialize Docker Directory Structure
+
 ```bash
 feat(docker): initialize multi-version directory structure
 
@@ -622,6 +624,7 @@ Validates: Requirements 1.1, 2.1, 2.2
 ```
 
 #### Commit 2: Migrate Base Dockerfile Templates
+
 ```bash
 feat(docker): migrate and standardize Dockerfile templates
 
@@ -635,6 +638,7 @@ Validates: Requirements 1.1, 3.1, 3.2, 3.3, 3.4, 4.1, 4.6
 ```
 
 #### Commit 3: Implement Entrypoint System Migration
+
 ```bash
 feat(docker): implement modular entrypoint system
 
@@ -651,6 +655,7 @@ Validates: Requirements 1.1, 4.2, 4.3, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7
 ### Phase 2: Package Management and Security (Atomic Commits 4-6)
 
 #### Commit 4: Standardize Package Management
+
 ```bash
 feat(docker): implement standardized package management
 
@@ -663,6 +668,7 @@ Validates: Requirements 8.1, 8.2, 8.3, 8.4, 8.5
 ```
 
 #### Commit 5: Implement gosu Security System
+
 ```bash
 feat(docker): add gosu for secure privilege dropping
 
@@ -675,6 +681,7 @@ Validates: Requirements 8.6, 5.1, 5.2, 5.3, 5.4
 ```
 
 #### Commit 6: Add Configuration Management
+
 ```bash
 feat(docker): implement comprehensive configuration management
 
@@ -689,6 +696,7 @@ Validates: Requirements 2.4, 11.1, 11.2, 11.3, 11.4, 11.5, 11.6
 ### Phase 3: CI/CD and Automation (Atomic Commits 7-9)
 
 #### Commit 7: Implement Build Workflows
+
 ```bash
 feat(ci): add multi-architecture build workflows
 
@@ -701,6 +709,7 @@ Validates: Requirements 6.1, 6.2, 6.3, 6.5
 ```
 
 #### Commit 8: Add Testing and Security Scanning
+
 ```bash
 feat(ci): implement comprehensive testing and security
 
@@ -713,6 +722,7 @@ Validates: Requirements 6.4, 12.1, 12.2, 12.3, 12.4
 ```
 
 #### Commit 9: Configure Release Automation
+
 ```bash
 feat(ci): add release automation and tagging
 
@@ -727,6 +737,7 @@ Validates: Requirements 6.6, 3.5, 3.6
 ### Phase 4: Documentation and Validation (Atomic Commits 10-12)
 
 #### Commit 10: Create Comprehensive Documentation
+
 ```bash
 docs: add comprehensive documentation suite
 
@@ -739,6 +750,7 @@ Validates: Requirements 10.1, 10.2, 10.3, 10.4, 10.5, 10.6
 ```
 
 #### Commit 11: Implement Migration Validation
+
 ```bash
 test: add migration validation and testing
 
@@ -751,6 +763,7 @@ Validates: Requirements 12.1, 12.2, 12.3, 12.4, 12.5
 ```
 
 #### Commit 12: Final Integration and Compliance
+
 ```bash
 feat: complete migration with compliance validation
 
