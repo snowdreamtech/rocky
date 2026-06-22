@@ -7,7 +7,7 @@
 #   - Native support for PUID/PGID user mapping.
 #   - Pre-installed with essential dev/ops tooling (Git, Curl, Sudo, etc.).
 
-FROM rockylinux/rockylinux:9.8
+FROM rockylinux/rockylinux:9.8.20260525.0
 
 # Build-time Configuration
 ARG BUILDTIME \
