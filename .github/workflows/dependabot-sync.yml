@@ -42,9 +42,6 @@ name: "🤖 Dependabot Smart Sync"
       # UniRTM toolchain configuration
       - ".unirtm.toml"
       - ".github/workflows/dependabot-sync.yml"
-  schedule:
-    # Weekly safety net: every Monday at 06:00 UTC
-    - cron: "0 6 * * 1"
   workflow_dispatch:
 
 permissions: {}
