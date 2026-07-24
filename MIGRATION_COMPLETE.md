@@ -13,7 +13,7 @@ This migration transformed a single-version Docker setup into a comprehensive, m
 ### ✅ **Complete Functionality Migration**
 
 - All features from rocky0 preserved and enhanced
-- Multi-version support (Rocky Linux 8.10, 9.7, 10.1)
+- Multi-version support (Rocky Linux 8.10, 9.7, 10.2)
 - Enhanced user mapping and security features
 - Improved debug logging and error handling
 

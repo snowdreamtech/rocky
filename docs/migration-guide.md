@@ -67,7 +67,7 @@ rocky/
 **Old Tags:**
 
 - `latest`
-- `10.1`
+- `10.2`
 - Version-based tags
 
 **New Tags:**
