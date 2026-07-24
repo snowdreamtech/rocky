@@ -5,7 +5,9 @@
       "release-type": "simple",
       "component": "8",
       "include-component-in-tag": true,
+      "release-as": "8.10.0",
       "changelog-path": "CHANGELOG.md",
+      "exclude-paths": ["docker/8/CHANGELOG.md"],
       "extra-files": [
         {
           "type": "generic",
@@ -18,7 +20,9 @@
       "release-type": "simple",
       "component": "9",
       "include-component-in-tag": true,
+      "release-as": "9.7.0",
       "changelog-path": "CHANGELOG.md",
+      "exclude-paths": ["docker/9/CHANGELOG.md"],
       "extra-files": [
         {
           "type": "generic",
@@ -31,7 +35,9 @@
       "release-type": "simple",
       "component": "10",
       "include-component-in-tag": true,
+      "release-as": "10.2.0",
       "changelog-path": "CHANGELOG.md",
+      "exclude-paths": ["docker/10/CHANGELOG.md"],
       "extra-files": [
         {
           "type": "generic",
