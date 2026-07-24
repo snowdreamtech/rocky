@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial Rocky Linux 9.7 Docker image implementation
+- Initial Rocky Linux 9.8 Docker image implementation
 - Multi-architecture support (amd64, arm64, ppc64le, s390x)
 - Modular entrypoint system with alpine-style orchestration
 - User mapping support with PUID/PGID configuration

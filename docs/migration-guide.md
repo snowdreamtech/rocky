@@ -59,7 +59,7 @@ rocky/
 | Version | Old | New |
 |---------|-----|-----|
 | 8 | N/A | `rockylinux/rockylinux:8.10` |
-| 9 | N/A | `rockylinux/rockylinux:9.7` |
+| 9 | N/A | `rockylinux/rockylinux:9.8` |
 | 10 | `rockylinux/rockylinux:10.2` | `rockylinux/rockylinux:10.2` |
 
 ### 3. Tagging Strategy
@@ -73,7 +73,7 @@ rocky/
 **New Tags:**
 
 - `8-v8.10.0`
-- `9-v9.7.0`
+- `9-v9.8.0`
 - `10-v10.2.0`
 - Version-specific latest tags
 
@@ -221,7 +221,7 @@ docker run --rm rocky:10-test /bin/bash -c "cat /etc/os-release"
 | Version | amd64 | arm64 | ppc64le | s390x |
 |---------|-------|-------|---------|-------|
 | 8.10 | ✅ | ✅ | ✅ | ✅ |
-| 9.7 | ✅ | ✅ | ✅ | ✅ |
+| 9.8 | ✅ | ✅ | ✅ | ✅ |
 | 10.2 | ✅ | ✅ | ✅ | ✅ |
 
 ### Package Repositories by Version
@@ -229,7 +229,7 @@ docker run --rm rocky:10-test /bin/bash -c "cat /etc/os-release"
 | Version | PowerTools | CRB | Devel | Extras | EPEL |
 |---------|------------|-----|-------|--------|------|
 | 8.10 | ✅ | ❌ | ❌ | ❌ | ✅ |
-| 9.7 | ❌ | ✅ | ✅ | ✅ | ✅ |
+| 9.8 | ❌ | ✅ | ✅ | ✅ | ✅ |
 | 10.2 | ❌ | ✅ | ✅ | ✅ | ✅ |
 
 ## Breaking Changes
@@ -237,7 +237,7 @@ docker run --rm rocky:10-test /bin/bash -c "cat /etc/os-release"
 ### 1. Tag Format Change
 
 - **Impact**: Existing automation using `latest` or simple version tags
-- **Solution**: Update to new format (`8-v8.10.0`, `9-v9.7.0`, `10-v10.2.0`)
+- **Solution**: Update to new format (`8-v8.10.0`, `9-v9.8.0`, `10-v10.2.0`)
 
 ### 2. Base Image Change
 

@@ -13,7 +13,7 @@ This migration transformed a single-version Docker setup into a comprehensive, m
 ### ✅ **Complete Functionality Migration**
 
 - All features from rocky0 preserved and enhanced
-- Multi-version support (Rocky Linux 8.10, 9.7, 10.2)
+- Multi-version support (Rocky Linux 8.10, 9.8, 10.2)
 - Enhanced user mapping and security features
 - Improved debug logging and error handling
 
@@ -59,7 +59,7 @@ This migration transformed a single-version Docker setup into a comprehensive, m
 | Version | Base Image | Tag Format | Architectures | Status |
 |---------|------------|------------|---------------|--------|
 | 8 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
-| 9 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
+| 9 | rockylinux/rockylinux:9.8 | `9-v9.8.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
 | 10 | rockylinux/rockylinux:10.2 | `10-v10.2.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
 
 ### Repository Configuration
@@ -67,7 +67,7 @@ This migration transformed a single-version Docker setup into a comprehensive, m
 | Version | PowerTools | CRB | Devel | Extras | EPEL |
 |---------|------------|-----|-------|--------|------|
 | 8.10 | ✅ | ❌ | ❌ | ❌ | ✅ |
-| 9.7 | ❌ | ✅ | ✅ | ✅ | ✅ |
+| 9.8 | ❌ | ✅ | ✅ | ✅ | ✅ |
 | 10.2 | ❌ | ✅ | ✅ | ✅ | ✅ |
 
 ## AI Standards Compliance ✅
@@ -108,7 +108,7 @@ rocky/
 │   │   ├── vimrc.local             # Vim configuration
 │   │   ├── .dockerignore           # Build optimization
 │   │   └── CHANGELOG.md            # Version changelog
-│   ├── 9/                          # Rocky Linux 9.7 (same structure)
+│   ├── 9/                          # Rocky Linux 9.8 (same structure)
 │   └── 10/                         # Rocky Linux 10.2 (same structure)
 ├── .github/workflows/               # CI/CD automation
 │   ├── docker-build.yml            # Multi-architecture builds

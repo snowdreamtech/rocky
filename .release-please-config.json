@@ -20,7 +20,7 @@
       "release-type": "simple",
       "component": "9",
       "include-component-in-tag": true,
-      "release-as": "9.7.0",
+      "release-as": "9.8.0",
       "changelog-path": "CHANGELOG.md",
       "exclude-paths": ["docker/9/CHANGELOG.md"],
       "extra-files": [

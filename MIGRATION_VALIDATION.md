@@ -82,10 +82,10 @@ This document validates the successful migration from rocky0 to rocky project wi
 
 - [x] 3.1: Rocky Linux minimal images (FROM rockylinux/rockylinux:X.Y)
 - [x] 3.2: Version 8 uses rockylinux/rockylinux:8.10
-- [x] 3.3: Version 9 uses rockylinux/rockylinux:9.7
+- [x] 3.3: Version 9 uses rockylinux/rockylinux:9.8
 - [x] 3.4: Version 10 uses rockylinux/rockylinux:10.2
-- [x] 3.5: Three-digit format (8.10.0, 9.7.0, 10.2.0) for Docker image tags
-- [x] 3.6: Docker image tags like 8-v8.10.0, 9-v9.7.0, 10-v10.2.0
+- [x] 3.5: Three-digit format (8.10.0, 9.8.0, 10.2.0) for Docker image tags
+- [x] 3.6: Docker image tags like 8-v8.10.0, 9-v9.8.0, 10-v10.2.0
 
 ### ✅ Requirement 4: Content Alignment with Alpine Standards
 
@@ -100,7 +100,7 @@ This document validates the successful migration from rocky0 to rocky project wi
 
 - [x] 5.1: Multi-architecture support (linux/amd64, linux/arm64, linux/ppc64le, linux/s390x)
 - [x] 5.2: Rocky 8.10 platform support configured
-- [x] 5.3: Rocky 9.7 platform support configured
+- [x] 5.3: Rocky 9.8 platform support configured
 - [x] 5.4: Rocky 10.2 platform support configured
 - [x] 5.5: Architecture reference documented
 - [x] 5.6: Platform-specific optimizations implemented
@@ -176,7 +176,7 @@ This document validates the successful migration from rocky0 to rocky project wi
 | Version | amd64 | arm64 | ppc64le | s390x | Status |
 |---------|-------|-------|---------|-------|--------|
 | 8.10 | ✅ | ✅ | ✅ | ✅ | Configured |
-| 9.7 | ✅ | ✅ | ✅ | ✅ | Configured |
+| 9.8 | ✅ | ✅ | ✅ | ✅ | Configured |
 | 10.2 | ✅ | ✅ | ✅ | ✅ | Configured |
 
 ### Repository Configuration Matrix ✅
@@ -184,7 +184,7 @@ This document validates the successful migration from rocky0 to rocky project wi
 | Version | PowerTools | CRB | Devel | Extras | EPEL | Status |
 |---------|------------|-----|-------|--------|------|--------|
 | 8.10 | ✅ | ❌ | ❌ | ❌ | ✅ | Correct |
-| 9.7 | ❌ | ✅ | ✅ | ✅ | ✅ | Correct |
+| 9.8 | ❌ | ✅ | ✅ | ✅ | ✅ | Correct |
 | 10.2 | ❌ | ✅ | ✅ | ✅ | ✅ | Correct |
 
 ### Security Features ✅

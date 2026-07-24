@@ -18,7 +18,7 @@ Rocky Linux 的 Docker 镜像。支持多平台架构：(amd64, arm64, ppc64le, 
 | 版本 | Rocky Linux | 基础镜像 | 标签格式 | 状态 |
 |------|-------------|----------|----------|------|
 | 8 | 8.10 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | ✅ 活跃 |
-| 9 | 9.7 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | ✅ 活跃 |
+| 9 | 9.8 | rockylinux/rockylinux:9.8 | `9-v9.8.0` | ✅ 活跃 |
 | 10 | 10.2 | rockylinux/rockylinux:10.2 | `10-v10.2.0` | ✅ 活跃 |
 
 ## 支持的架构

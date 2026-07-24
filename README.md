@@ -18,7 +18,7 @@ Docker Image packaging for Rocky Linux. (amd64, arm64, ppc64le, s390x)
 | Version | Rocky Linux | Base Image | Tag Format | Status |
 |---------|-------------|------------|------------|--------|
 | 8 | 8.10 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | ✅ Active |
-| 9 | 9.7 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | ✅ Active |
+| 9 | 9.8 | rockylinux/rockylinux:9.8 | `9-v9.8.0` | ✅ Active |
 | 10 | 10.2 | rockylinux/rockylinux:10.2 | `10-v10.2.0` | ✅ Active |
 
 ## Supported Architectures
