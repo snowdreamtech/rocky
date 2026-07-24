@@ -19,7 +19,7 @@ Rocky Linux 的 Docker 镜像。支持多平台架构：(amd64, arm64, ppc64le, 
 |------|-------------|----------|----------|------|
 | 8 | 8.10 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | ✅ 活跃 |
 | 9 | 9.7 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | ✅ 活跃 |
-| 10 | 10.1 | rockylinux/rockylinux:10.1 | `10-v10.1.0` | ✅ 活跃 |
+| 10 | 10.2 | rockylinux/rockylinux:10.2 | `10-v10.2.0` | ✅ 活跃 |
 
 ## 支持的架构
 
@@ -38,7 +38,7 @@ Rocky Linux 的 Docker 镜像。支持多平台架构：(amd64, arm64, ppc64le, 
 docker run -d \
   --name=rocky \
   -e TZ=Asia/Shanghai \
-  snowdreamtech/rocky:10-v10.1.0
+  snowdreamtech/rocky:10-v10.2.0
 ```
 
 #### 高级用法（用户映射）
@@ -53,7 +53,7 @@ docker run -d \
   -e DEBUG=true \
   -e TZ=Asia/Shanghai \
   -v /path/to/data:/data \
-  snowdreamtech/rocky:10-v10.1.0
+  snowdreamtech/rocky:10-v10.2.0
 ```
 
 ### Docker Compose
@@ -63,7 +63,7 @@ version: '3.8'
 
 services:
   rocky:
-    image: snowdreamtech/rocky:10-v10.1.0
+    image: snowdreamtech/rocky:10-v10.2.0
     container_name: rocky
     environment:
       - PUID=1000
@@ -132,7 +132,7 @@ docker build -t rocky:local ./docker/10
 # 多架构构建
 docker buildx build \
   --platform linux/amd64,linux/arm64,linux/ppc64le,linux/s390x \
-  -t snowdreamtech/rocky:10-v10.1.0 \
+  -t snowdreamtech/rocky:10-v10.2.0 \
   ./docker/10 \
   --push
 ```
@@ -178,16 +178,16 @@ rocky/
 
 ```bash
 # 运行基本功能测试
-docker run --rm snowdreamtech/rocky:10-v10.1.0 \
+docker run --rm snowdreamtech/rocky:10-v10.2.0 \
   /bin/bash -c "echo '测试通过'"
 
 # 测试用户映射
 docker run --rm -e PUID=1000 -e PGID=1000 -e USER=testuser \
-  snowdreamtech/rocky:10-v10.1.0 /bin/bash -c "id"
+  snowdreamtech/rocky:10-v10.2.0 /bin/bash -c "id"
 
 # 测试调试模式
 docker run --rm -e DEBUG=true \
-  snowdreamtech/rocky:10-v10.1.0 /bin/bash -c "echo '调试测试'"
+  snowdreamtech/rocky:10-v10.2.0 /bin/bash -c "echo '调试测试'"
 ```
 
 ## 故障排除
@@ -198,21 +198,21 @@ docker run --rm -e DEBUG=true \
 
 ```bash
 # 确保正确的 PUID/PGID 映射
-docker run -e PUID=$(id -u) -e PGID=$(id -g) snowdreamtech/rocky:10-v10.1.0
+docker run -e PUID=$(id -u) -e PGID=$(id -g) snowdreamtech/rocky:10-v10.2.0
 ```
 
 #### 容器立即退出
 
 ```bash
 # 启用保活模式
-docker run -e KEEPALIVE=1 snowdreamtech/rocky:10-v10.1.0
+docker run -e KEEPALIVE=1 snowdreamtech/rocky:10-v10.2.0
 ```
 
 #### 调试信息
 
 ```bash
 # 启用调试日志
-docker run -e DEBUG=true snowdreamtech/rocky:10-v10.1.0
+docker run -e DEBUG=true snowdreamtech/rocky:10-v10.2.0
 ```
 
 ### 获取帮助

@@ -19,7 +19,7 @@ Docker Image packaging for Rocky Linux. (amd64, arm64, ppc64le, s390x)
 |---------|-------------|------------|------------|--------|
 | 8 | 8.10 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | ✅ Active |
 | 9 | 9.7 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | ✅ Active |
-| 10 | 10.1 | rockylinux/rockylinux:10.1 | `10-v10.1.0` | ✅ Active |
+| 10 | 10.2 | rockylinux/rockylinux:10.2 | `10-v10.2.0` | ✅ Active |
 
 ## Supported Architectures
 
@@ -38,7 +38,7 @@ Docker Image packaging for Rocky Linux. (amd64, arm64, ppc64le, s390x)
 docker run -d \
   --name=rocky \
   -e TZ=Asia/Shanghai \
-  snowdreamtech/rocky:10-v10.1.0
+  snowdreamtech/rocky:10-v10.2.0
 ```
 
 #### Advanced Usage with User Mapping
@@ -53,7 +53,7 @@ docker run -d \
   -e DEBUG=true \
   -e TZ=Asia/Shanghai \
   -v /path/to/data:/data \
-  snowdreamtech/rocky:10-v10.1.0
+  snowdreamtech/rocky:10-v10.2.0
 ```
 
 ### Docker Compose
@@ -63,7 +63,7 @@ version: '3.8'
 
 services:
   rocky:
-    image: snowdreamtech/rocky:10-v10.1.0
+    image: snowdreamtech/rocky:10-v10.2.0
     container_name: rocky
     environment:
       - PUID=1000
@@ -132,7 +132,7 @@ docker build -t rocky:local ./docker/10
 # Build for multiple architectures
 docker buildx build \
   --platform linux/amd64,linux/arm64,linux/ppc64le,linux/s390x \
-  -t snowdreamtech/rocky:10-v10.1.0 \
+  -t snowdreamtech/rocky:10-v10.2.0 \
   ./docker/10 \
   --push
 ```
@@ -178,16 +178,16 @@ rocky/
 
 ```bash
 # Run basic functionality test
-docker run --rm snowdreamtech/rocky:10-v10.1.0 \
+docker run --rm snowdreamtech/rocky:10-v10.2.0 \
   /bin/bash -c "echo 'Test passed'"
 
 # Test user mapping
 docker run --rm -e PUID=1000 -e PGID=1000 -e USER=testuser \
-  snowdreamtech/rocky:10-v10.1.0 /bin/bash -c "id"
+  snowdreamtech/rocky:10-v10.2.0 /bin/bash -c "id"
 
 # Test debug mode
 docker run --rm -e DEBUG=true \
-  snowdreamtech/rocky:10-v10.1.0 /bin/bash -c "echo 'Debug test'"
+  snowdreamtech/rocky:10-v10.2.0 /bin/bash -c "echo 'Debug test'"
 ```
 
 ## Troubleshooting
@@ -198,21 +198,21 @@ docker run --rm -e DEBUG=true \
 
 ```bash
 # Ensure proper PUID/PGID mapping
-docker run -e PUID=$(id -u) -e PGID=$(id -g) snowdreamtech/rocky:10-v10.1.0
+docker run -e PUID=$(id -u) -e PGID=$(id -g) snowdreamtech/rocky:10-v10.2.0
 ```
 
 #### Container Exits Immediately
 
 ```bash
 # Enable keepalive mode
-docker run -e KEEPALIVE=1 snowdreamtech/rocky:10-v10.1.0
+docker run -e KEEPALIVE=1 snowdreamtech/rocky:10-v10.2.0
 ```
 
 #### Debug Information
 
 ```bash
 # Enable debug logging
-docker run -e DEBUG=true snowdreamtech/rocky:10-v10.1.0
+docker run -e DEBUG=true snowdreamtech/rocky:10-v10.2.0
 ```
 
 ### Getting Help

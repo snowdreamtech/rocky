@@ -10,7 +10,7 @@ The migration involves moving from a single-version Docker setup to a multi-vers
 
 ### Before (rocky0)
 
-- Single Dockerfile for Rocky Linux 10.1
+- Single Dockerfile for Rocky Linux 10.2
 - Basic entrypoint system
 - Limited architecture support
 - Minimal CI/CD automation
@@ -60,7 +60,7 @@ rocky/
 |---------|-----|-----|
 | 8 | N/A | `rockylinux/rockylinux:8.10` |
 | 9 | N/A | `rockylinux/rockylinux:9.7` |
-| 10 | `rockylinux/rockylinux:10.1` | `rockylinux/rockylinux:10.1` |
+| 10 | `rockylinux/rockylinux:10.2` | `rockylinux/rockylinux:10.2` |
 
 ### 3. Tagging Strategy
 
@@ -74,7 +74,7 @@ rocky/
 
 - `8-v8.10.0`
 - `9-v9.7.0`
-- `10-v10.1.0`
+- `10-v10.2.0`
 - Version-specific latest tags
 
 ### 4. Environment Variables
@@ -124,7 +124,7 @@ docker run -d snowdreamtech/rocky:latest
 **New:**
 
 ```bash
-docker run -d snowdreamtech/rocky:10-v10.1.0
+docker run -d snowdreamtech/rocky:10-v10.2.0
 ```
 
 #### 2. Update Docker Compose
@@ -142,7 +142,7 @@ services:
 ```yaml
 services:
   rocky:
-    image: snowdreamtech/rocky:10-v10.1.0
+    image: snowdreamtech/rocky:10-v10.2.0
     environment:
       - TZ=Asia/Shanghai  # New timezone support
 ```
@@ -156,13 +156,13 @@ services:
 docker run -e DEBUG=true snowdreamtech/rocky:latest
 
 # New: Comprehensive debug logging
-docker run -e DEBUG=true snowdreamtech/rocky:10-v10.1.0
+docker run -e DEBUG=true snowdreamtech/rocky:10-v10.2.0
 ```
 
 **New Timezone Support:**
 
 ```bash
-docker run -e TZ=Asia/Shanghai snowdreamtech/rocky:10-v10.1.0
+docker run -e TZ=Asia/Shanghai snowdreamtech/rocky:10-v10.2.0
 ```
 
 ### For Developers
@@ -222,7 +222,7 @@ docker run --rm rocky:10-test /bin/bash -c "cat /etc/os-release"
 |---------|-------|-------|---------|-------|
 | 8.10 | ✅ | ✅ | ✅ | ✅ |
 | 9.7 | ✅ | ✅ | ✅ | ✅ |
-| 10.1 | ✅ | ✅ | ✅ | ✅ |
+| 10.2 | ✅ | ✅ | ✅ | ✅ |
 
 ### Package Repositories by Version
 
@@ -230,14 +230,14 @@ docker run --rm rocky:10-test /bin/bash -c "cat /etc/os-release"
 |---------|------------|-----|-------|--------|------|
 | 8.10 | ✅ | ❌ | ❌ | ❌ | ✅ |
 | 9.7 | ❌ | ✅ | ✅ | ✅ | ✅ |
-| 10.1 | ❌ | ✅ | ✅ | ✅ | ✅ |
+| 10.2 | ❌ | ✅ | ✅ | ✅ | ✅ |
 
 ## Breaking Changes
 
 ### 1. Tag Format Change
 
 - **Impact**: Existing automation using `latest` or simple version tags
-- **Solution**: Update to new format (`8-v8.10.0`, `9-v9.7.0`, `10-v10.1.0`)
+- **Solution**: Update to new format (`8-v8.10.0`, `9-v9.7.0`, `10-v10.2.0`)
 
 ### 2. Base Image Change
 
@@ -255,18 +255,18 @@ docker run --rm rocky:10-test /bin/bash -c "cat /etc/os-release"
 
 ```bash
 # Test basic functionality
-docker run --rm snowdreamtech/rocky:10-v10.1.0 \
+docker run --rm snowdreamtech/rocky:10-v10.2.0 \
   /bin/bash -c "echo 'Migration test passed'"
 
 # Test user mapping
 docker run --rm \
   -e PUID=1000 -e PGID=1000 -e USER=testuser \
-  snowdreamtech/rocky:10-v10.1.0 \
+  snowdreamtech/rocky:10-v10.2.0 \
   /bin/bash -c "id && echo 'User mapping works'"
 
 # Test new timezone feature
 docker run --rm -e TZ=Asia/Shanghai \
-  snowdreamtech/rocky:10-v10.1.0 \
+  snowdreamtech/rocky:10-v10.2.0 \
   /bin/bash -c "date && echo 'Timezone configuration works'"
 ```
 
@@ -274,23 +274,23 @@ docker run --rm -e TZ=Asia/Shanghai \
 
 ```bash
 # Compare startup times
-time docker run --rm snowdreamtech/rocky:10-v10.1.0 /bin/true
+time docker run --rm snowdreamtech/rocky:10-v10.2.0 /bin/true
 
 # Test debug mode performance
 time docker run --rm -e DEBUG=true \
-  snowdreamtech/rocky:10-v10.1.0 /bin/true
+  snowdreamtech/rocky:10-v10.2.0 /bin/true
 ```
 
 ### 3. Security Test
 
 ```bash
 # Test gosu functionality
-docker run --rm snowdreamtech/rocky:10-v10.1.0 \
+docker run --rm snowdreamtech/rocky:10-v10.2.0 \
   /bin/bash -c "gosu --version && echo 'gosu works'"
 
 # Test privilege dropping
 docker run --rm -e PUID=1000 -e PGID=1000 \
-  snowdreamtech/rocky:10-v10.1.0 \
+  snowdreamtech/rocky:10-v10.2.0 \
   /bin/bash -c "whoami && echo 'Privilege dropping works'"
 ```
 
@@ -309,7 +309,7 @@ docker run -d snowdreamtech/rocky:old-tag
 
 ```bash
 # Test new images in non-production first
-docker run -d snowdreamtech/rocky:10-v10.1.0 # Test environment
+docker run -d snowdreamtech/rocky:10-v10.2.0 # Test environment
 # Keep old images in production until validated
 ```
 
@@ -319,7 +319,7 @@ docker run -d snowdreamtech/rocky:10-v10.1.0 # Test environment
 # Use different versions for different services
 docker-compose.yml:
   service1:
-    image: snowdreamtech/rocky:10-v10.1.0  # New
+    image: snowdreamtech/rocky:10-v10.2.0  # New
   service2:
     image: snowdreamtech/rocky:old-tag     # Old (temporary)
 ```

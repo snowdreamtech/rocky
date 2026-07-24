@@ -76,8 +76,8 @@ jobs:
             base_image: "rockylinux/rockylinux:9.7"
             is_latest: false
           - version: "10"
-            rocky_version: "10.1.0"
-            base_image: "rockylinux/rockylinux:10.1"
+            rocky_version: "10.2.0"
+            base_image: "rockylinux/rockylinux:10.2"
             is_latest: true
     concurrency:
       group: docker-${{ github.workflow }}-${{ github.event_name == 'schedule' && 'nightly' || github.ref }}-${{ matrix.version }}

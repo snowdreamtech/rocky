@@ -60,7 +60,7 @@ This migration transformed a single-version Docker setup into a comprehensive, m
 |---------|------------|------------|---------------|--------|
 | 8 | rockylinux/rockylinux:8.10 | `8-v8.10.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
 | 9 | rockylinux/rockylinux:9.7 | `9-v9.7.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
-| 10 | rockylinux/rockylinux:10.1 | `10-v10.1.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
+| 10 | rockylinux/rockylinux:10.2 | `10-v10.2.0` | amd64, arm64, ppc64le, s390x | ✅ Active |
 
 ### Repository Configuration
 
@@ -68,7 +68,7 @@ This migration transformed a single-version Docker setup into a comprehensive, m
 |---------|------------|-----|-------|--------|------|
 | 8.10 | ✅ | ❌ | ❌ | ❌ | ✅ |
 | 9.7 | ❌ | ✅ | ✅ | ✅ | ✅ |
-| 10.1 | ❌ | ✅ | ✅ | ✅ | ✅ |
+| 10.2 | ❌ | ✅ | ✅ | ✅ | ✅ |
 
 ## AI Standards Compliance ✅
 
@@ -109,7 +109,7 @@ rocky/
 │   │   ├── .dockerignore           # Build optimization
 │   │   └── CHANGELOG.md            # Version changelog
 │   ├── 9/                          # Rocky Linux 9.7 (same structure)
-│   └── 10/                         # Rocky Linux 10.1 (same structure)
+│   └── 10/                         # Rocky Linux 10.2 (same structure)
 ├── .github/workflows/               # CI/CD automation
 │   ├── docker-build.yml            # Multi-architecture builds
 │   └── docker-test.yml             # Comprehensive testing
