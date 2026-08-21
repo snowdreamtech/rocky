@@ -55,7 +55,6 @@ ENV KEEPALIVE=${KEEPALIVE} \
 RUN set -eux \
     && dnf install -y dnf-plugins-core \
     && dnf config-manager --set-enabled powertools \
-    && dnf config-manager --set-enabled devel \
     && dnf config-manager --set-enabled extras \
     && dnf -y --allowerasing install epel-release \
     && dnf -y --allowerasing update \
