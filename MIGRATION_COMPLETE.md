@@ -43,7 +43,7 @@ This migration transformed a single-version Docker setup into a comprehensive, m
 - Automated multi-architecture builds
 - Comprehensive testing workflows
 - Security scanning integration
-- Multi-registry deployment (Docker Hub, GHCR, Quay.io)
+- Multi-registry deployment (Docker Hub, GHCR)
 
 ### ✅ **Documentation Completeness**
 

@@ -202,7 +202,7 @@ This document validates the successful migration from rocky0 to rocky project wi
 - [x] Multi-architecture builds
 - [x] Automated testing workflows
 - [x] Security scanning with Trivy
-- [x] Multi-registry deployment (Docker Hub, GHCR, Quay.io)
+- [x] Multi-registry deployment (Docker Hub, GHCR)
 - [x] Proper caching strategies
 - [x] Branch-based and tag-based triggers
 
