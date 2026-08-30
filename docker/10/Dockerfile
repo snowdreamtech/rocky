@@ -62,8 +62,8 @@ RUN set -eux \
     && dnf config-manager --set-enabled crb \
     && dnf config-manager --set-enabled extras \
     && dnf -y --allowerasing install epel-release \
-    && sed -i -e 's|^mirrorlist=|#mirrorlist=|g' \
-              -e 's|^metalink=|#metalink=|g' \
+    && sed -i -e 's|^metalink=|#metalink=|g' \
+              -e 's|download.example|dl.fedoraproject.org|g' \
               -e 's|^#baseurl=|baseurl=|g' \
               /etc/yum.repos.d/epel*.repo \
     && dnf -y --allowerasing update \
