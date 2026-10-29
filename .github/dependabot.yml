@@ -33,7 +33,7 @@ updates:
       - "infrastructure"
 
   - package-ecosystem: "docker"
-    directory: "/docker/alpine"
+    directory: "/docker/10"
     target-branch: "dev"
     open-pull-requests-limit: 5
     rebase-strategy: "auto"
@@ -62,7 +62,7 @@ updates:
           - "version-update:semver-major"
 
   - package-ecosystem: "docker"
-    directory: "/docker/debian"
+    directory: "/docker/8"
     target-branch: "dev"
     open-pull-requests-limit: 5
     rebase-strategy: "auto"
@@ -91,7 +91,7 @@ updates:
           - "version-update:semver-major"
 
   - package-ecosystem: "docker"
-    directory: "/docker/rocky"
+    directory: "/docker/9"
     target-branch: "dev"
     open-pull-requests-limit: 5
     rebase-strategy: "auto"
